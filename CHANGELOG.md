@@ -9,7 +9,6 @@ project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 
-
 <a name="v11.0.0"></a>
 ## [v11.0.0] - 2020-03-31
 FEATURES:
