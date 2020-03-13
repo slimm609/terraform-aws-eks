@@ -15,7 +15,7 @@ resource "aws_eks_cluster" "this" {
   tags                      = var.tags
 
   vpc_config {
-    security_group_ids      = compact([local.cluster_security_group_id])
+    security_group_ids      = compact([local.additional_security_group_id])
     subnet_ids              = var.subnets
     endpoint_private_access = var.cluster_endpoint_private_access
     endpoint_public_access  = var.cluster_endpoint_public_access
@@ -91,7 +91,7 @@ resource "aws_security_group_rule" "cluster_egress_internet" {
   count             = var.cluster_create_security_group && var.create_eks ? 1 : 0
   description       = "Allow cluster egress access to the Internet."
   protocol          = "-1"
-  security_group_id = local.cluster_security_group_id
+  security_group_id = local.additional_security_group_id
   cidr_blocks       = ["0.0.0.0/0"]
   from_port         = 0
   to_port           = 0
