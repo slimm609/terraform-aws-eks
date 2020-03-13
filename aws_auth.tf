@@ -76,5 +76,7 @@ resource "kubernetes_config_map" "aws_auth" {
     )
     mapUsers    = yamlencode(var.map_users)
     mapAccounts = yamlencode(var.map_accounts)
+  lifecycle {
+    ignore_changes = [data]
   }
 }
