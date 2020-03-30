@@ -28,11 +28,6 @@ output "cluster_version" {
   value       = element(concat(aws_eks_cluster.this[*].version, list("")), 0)
 }
 
-output "additional_security_group_id" {
-  description = "Additional security group ID attached to the EKS cluster."
-  value       = local.additional_security_group_id
-}
-
 output "cluster_security_group_id" {
   description = "Cluster security group ID attached to the EKS cluster."
   value       = var.cluster_version >= 1.14 ? element(concat(aws_eks_cluster.this[*].vpc_config[0].cluster_security_group_id, list("")), 0) : local.additional_security_group_id
